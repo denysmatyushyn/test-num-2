@@ -1,15 +1,16 @@
 <?php
 $url = $_SERVER['REQUEST_URI'];
 
-$key = '?arg=Denis';
-
-if (strpos($url, $key) == false) {
+function writePhpInfo() {
 	phpinfo();
 }
-else {
-	$url_components = parse_url($url);
-	parse_str($url_components['query'], $params);
-	echo ' Hi '.$params['arg'];
+
+function writeHelloName($strUrl) {
+	echo ' Hi '.$strUrl;
 }
 
-?>
+if (isset($_GET['arg'])) {
+	writeHelloName($_GET['arg']);
+} else {
+	writePhpInfo();
+}
