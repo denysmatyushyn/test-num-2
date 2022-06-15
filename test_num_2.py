@@ -1,10 +1,12 @@
 import urllib.request
 import re
 
+url_first = 'http://matiushyn.dev.run//'
 search_phrase_1 = r"PHP Version"
-search_phrase_2 = r"Hi Denis"
-url_first = "http://matiushyn.dev.run//"
-url_second = "http://matiushyn.dev.run/?arg=Denis"
+
+url_second = 'http://matiushyn.dev.run/?arg='
+search_phrase_2 = r'Hi '
+payload = ['Denis', 'Akim', 'Sany']
 
 
 def test_scraper(check_url, search_phrase):
@@ -18,4 +20,6 @@ def test_scraper(check_url, search_phrase):
 
 
 test_scraper(url_first, search_phrase_1)
-test_scraper(url_second, search_phrase_2)
+for x in payload:
+    print(url_second+x, search_phrase_2+x)
+    test_scraper(url_second+x, search_phrase_2+x)
